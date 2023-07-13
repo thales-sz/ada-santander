@@ -1,1 +1,3 @@
 *.class
+/shelf/
+/workspace.xml
