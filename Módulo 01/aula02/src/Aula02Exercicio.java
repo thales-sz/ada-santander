@@ -4,8 +4,9 @@ import java.util.Scanner;
 public class Aula02Exercicio {
     public static void main(String[] args) {
         String[] fruits = { "peras", "maçãs", "laranjas", "caquis", "tomates" };
+        HashMap<String, Integer> shoppingCart = new HashMap<>();
 
-        HashMap<String, Integer> shoppingCart = createShoppingCart(fruits);
+        populateShoppingCart(fruits, shoppingCart);
 
         double finalPrice = calculateFinalPrice(shoppingCart);
 
@@ -26,9 +27,8 @@ public class Aula02Exercicio {
         return price;
     }
 
-    public static HashMap<String, Integer> createShoppingCart(String[] fruits) {
+    public static HashMap<String, Integer> populateShoppingCart(String[] fruits, HashMap<String, Integer> shoppingCart) {
         Scanner sc = new Scanner(System.in);
-        HashMap<String, Integer> shoppingCart = new HashMap<>();
 
         for (String fruit : fruits) {
             System.out.printf("Quantas %s você quer? ", fruit);
@@ -37,7 +37,6 @@ public class Aula02Exercicio {
         }
 
         sc.close();
-
         return shoppingCart;
     }
 }
