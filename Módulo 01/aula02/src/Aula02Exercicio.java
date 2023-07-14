@@ -37,7 +37,6 @@ public class Aula02Exercicio {
         }
 
         sc.close();
-
         return shoppingCart;
     }
 }
