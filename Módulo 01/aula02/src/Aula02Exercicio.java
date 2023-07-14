@@ -3,8 +3,29 @@ import java.util.Scanner;
 
 public class Aula02Exercicio {
     public static void main(String[] args) {
+        String[] fruits = { "peras", "maçãs", "laranjas", "caquis", "tomates" };
+
+        HashMap<String, Integer> shoppingCart = createShoppingCart(fruits);
+
+        double finalPrice = calculateFinalPrice(shoppingCart);
+
+        System.out.printf("O preço final é: R$ %.2f", finalPrice);
+    }
+
+    public static double calculateFinalPrice(HashMap<String, Integer> shoppingCart) {
+        double price = 0.00;
+        for (int quantity : shoppingCart.values()) {
+            if (quantity > 10) {
+                price += quantity * 1.25;
+            } else {
+                price += quantity * 1.45;
+            }
+        }
+        return price;
+    }
+
+    public static HashMap<String, Integer> createShoppingCart(String[] fruits) {
         Scanner sc = new Scanner(System.in);
-        String[] fruits = { "Peras", "Maçãs", "Laranjas", "Caquis", "Tomates" };
         HashMap<String, Integer> shoppingCart = new HashMap<>();
 
         for (String fruit : fruits) {
@@ -14,10 +35,7 @@ public class Aula02Exercicio {
         }
 
         sc.close();
-    }
 
-    public static double calculateDiscount() {
-
-        return 0.00;
+        return shoppingCart;
     }
 }
