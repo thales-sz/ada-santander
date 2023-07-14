@@ -4,7 +4,7 @@ public class Aula01Exercicio {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Digite a temperatura em Fahrenheit: ");
+        System.out.print("Digite a temperatura em Fahrenheit: ");
         int temp = sc.nextInt();
         
         System.out.printf("A temperatura em Celsius é: %.2f", convertToCelsius(temp));
