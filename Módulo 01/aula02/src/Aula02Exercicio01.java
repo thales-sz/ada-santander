@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Aula02Exercicio {
+public class Aula02Exercicio01 {
     public static void main(String[] args) {
         double finalPrice = 0.00;
         Scanner sc = new Scanner(System.in);
