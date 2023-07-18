@@ -9,11 +9,7 @@ public class Aula03Exercicio06 {
     double b = sc.nextDouble();
     double c = sc.nextDouble();
 
-    if (!isTriangle(a, b, c)) {
-      System.out.println("Não é um triângulo");
-      sc.close();
-      return;
-    }
+    isTriangle(a, b, c);
 
     System.out.println("Área do triângulo: " + heronsFormula(a, b, c) + " cm²");
 
@@ -21,7 +17,8 @@ public class Aula03Exercicio06 {
   }
 
   public static boolean isTriangle(double a, double b, double c) {
-    return a < b + c && b < a + c && c < a + b;
+    if(a < b + c && b < a + c && c < a + b) return true;
+    throw new IllegalArgumentException("Não é um triângulo");
   }
 
   public static double heronsFormula(double a, double b, double c) {
