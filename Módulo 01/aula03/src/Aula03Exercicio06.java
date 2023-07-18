@@ -10,7 +10,7 @@ public class Aula03Exercicio06 {
     double c = sc.nextDouble();
 
     if (!isTriangle(a, b, c)) {
-      System.out.println("Não é um triângulo.");
+      System.out.println("Não é um triângulo");
       sc.close();
       return;
     }
