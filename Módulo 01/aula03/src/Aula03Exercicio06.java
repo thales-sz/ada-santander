@@ -17,6 +17,6 @@ public class Aula03Exercicio06 {
   public static double heronsFormula(double a, double b, double c) {
     double p = (a + b + c) / 2;
 
-    return Math.sqrt(p * (p -a) * (p - b) * (p - c));
+    return Math.sqrt(p * (p - a) * (p - b) * (p - c));
   }
 }

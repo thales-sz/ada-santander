@@ -26,5 +26,4 @@ public class Aula03Exercicio03 {
     return result + salary;
   }
 
-   
 }
