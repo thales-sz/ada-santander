@@ -25,6 +25,10 @@ public class Aula03Exercicio06 {
   }
 
   public static double heronsFormula(double a, double b, double c) {
+    if (!isTriangle(a, b, c)) {
+      return 0.0;
+    }
+
     double p = (a + b + c) / 2;
 
     double result = Math.sqrt(p * (p - a) * (p - b) * (p - c));
