@@ -48,7 +48,7 @@ public class Aula04Exercicio05 {
         return i;
       }
     }
-    
+
     return -1;
   }
 }
