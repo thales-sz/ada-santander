@@ -4,16 +4,31 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
-public class Aula06Exercicio01 {
-  public static void main(String[] args) {
+import aula06.src.utils.InvalidStateException;
 
-    System.out.println(valorProdutoFinal(250.10, Estado.MG) == 267.607);
-    System.out.println(valorProdutoFinal(250.10, Estado.RJ) == 287.615);
-    System.out.println(valorProdutoFinal(250.10, Estado.SP) == 280.112);
+public class Aula06Exercicio01 {
+  public static void main(String[] args) throws InvalidStateException {
+
+    System.out.println(valorProdutoFinal(250.10, "MG") == 267.607);
+    System.out.println(valorProdutoFinal(250.10, "RJ") == 287.615);
+    System.out.println(valorProdutoFinal(250.10, "SP") == 280.112);
+
+    try {
+      valorProdutoFinal(250.10, "RO");
+    } catch (InvalidStateException e) {
+      System.out.println(e.getMessage().equals("Estado inválido"));
+    } 
   }
 
-  public static double valorProdutoFinal(double valorProduto, Estado estado) {
-    double finalPrice = valorProduto * (estado.getTax() + 1);
+  public static double valorProdutoFinal(double valorProduto, String estado) throws InvalidStateException {
+    Estado currentState;
+    try {
+      currentState = Estado.valueOf(estado);
+    } catch (Exception e) {
+      throw new InvalidStateException("Estado inválido");
+    }
+    
+    double finalPrice = valorProduto * (currentState.getTax() + 1);
     return arredondar(finalPrice);
   }
 
