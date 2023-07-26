@@ -26,11 +26,11 @@ public class Aula07Exercicio01 {
       return this.keywords[0];
     }
 
-    public static void getWeekDay(String weekDay) throws InvalidWeekDayException {
-      for (Semana dia : Semana.values()) {
-        for (String keyword : dia.keywords) {
-          if (keyword.equalsIgnoreCase(weekDay)) {
-            System.out.printf("O dia da semana é: %s", dia.getName());
+    public static void getWeekDay(String userInput) throws InvalidWeekDayException {
+      for (Semana day : Semana.values()) {
+        for (String keyword : day.keywords) {
+          if (keyword.equalsIgnoreCase(userInput)) {
+            System.out.printf("O dia da semana é: %s", day.getName());
             System.exit(0);
           }
         }
@@ -43,10 +43,10 @@ public class Aula07Exercicio01 {
     Scanner sc = new Scanner(System.in);
 
     System.out.print("Digite o dia da semana: ");
-    String weekDay = sc.nextLine();
+    String userInput = sc.nextLine();
 
     try {
-      Semana.getWeekDay(weekDay);
+      Semana.getWeekDay(userInput);
     } catch (InvalidWeekDayException e) {
       System.out.println(e.getMessage());
       System.exit(1);
