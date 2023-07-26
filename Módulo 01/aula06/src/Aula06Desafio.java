@@ -2,16 +2,19 @@ package aula06.src;
 
 public class Aula06Desafio {
   public enum Semana {
-    DOMINGO("Domingo"),
-    SEGUNDA("Segunda-Feira"),
-    TERCA("Terça-Feira"),
-    QUARTA("Quarta-Feira"),
-    QUINTA("Quinta-Feira"),
-    SEXTA("Sexta-Feira"),
-    SABADO("Sábado");
+    DOMINGO(1, "Domingo"),
+    SEGUNDA(2, "Segunda-Feira"),
+    TERCA(3, "Terça-Feira"),
+    QUARTA(4, "Quarta-Feira"),
+    QUINTA(5, "Quinta-Feira"),
+    SEXTA(6, "Sexta-Feira"),
+    SABADO(7, "Sábado");
 
-    String day;
-    Semana(String day) {
+    final String day;
+    final int value;
+
+    Semana(int value, String day) {
+      this.value = value;
       this.day = day;
     }
 
@@ -21,11 +24,11 @@ public class Aula06Desafio {
   }
 
   public static void main(String[] args) {
-    System.out.println(Semana.DOMINGO.getDay().equals("Domingo"));
+    System.out.println(Semana.DOMINGO.getDay().equalsIgnoreCase("Domingo"));
     System.out.println(getDia("domingo") == Semana.DOMINGO);
   }
 
   public static Semana getDia(String dia) {
-    return Semana.valueOf(dia.toUpperCase());
+    return Semana.valueOf(dia);
   }
 }
