@@ -1,4 +1,5 @@
 package aula07;
+
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
@@ -7,9 +8,9 @@ import java.util.Arrays;
 
 public class Solution {
   public static void main(String[] args) {
-    int[] input = { 1, 2, 3, 4, 5 };
+    int[] input = { 2, 3 };
     System.out.println(parImpar(input));
-    System.out.println(numeroPertenceASequenciaFibonacci(20));
+    System.out.println(numeroPertenceASequenciaFibonacci(8));
   }
 
   public static String[] soletrandoStr(String input) {
@@ -17,22 +18,30 @@ public class Solution {
   }
 
   public static String numeroPertenceASequenciaFibonacci(int input) {
-    String result = "";
-    for (int i = 0; i <= input; i++) {
-      if (i == input) {
-        result += fibonacciSequence(i);
-        break;
-      }
-      result += fibonacciSequence(i) + ", ";
+    if (input < 0) {
+      return "Número inválido. A sequência de Fibonacci não é definida para números negativos.";
     }
-    return result;
-  }
 
-  public static int fibonacciSequence(int n) {
-    if (n == 0 || n == 1) {
-      return n;
+    StringBuilder result = new StringBuilder();
+    int prev1 = 0;
+    int prev2 = 1;
+    int fibValue = prev1 + prev2;
+
+    result.append(prev1);
+    
+    if (input >= 1) {
+      result.append(", ").append(prev2);
     }
-    return fibonacciSequence(n - 1) + fibonacciSequence(n - 2);
+
+    
+    while (fibValue <= input) {
+      result.append(", ").append(fibValue);
+      prev1 = prev2;
+      prev2 = fibValue;
+      fibValue = prev1 + prev2;
+    }
+
+    return result.toString();
   }
 
   public static int[] ordenar(int[] input) {
@@ -65,6 +74,15 @@ public class Solution {
       else
         impar++;
     }
-    return par + " pares, " + impar + " ímpares";
+
+    if (par <= 1 && impar <= 1) {
+      return par + " par " + impar + " ímpar ";
+    } else if (par <= 1 && impar > 1) {
+      return par + " par " + impar + " ímpares ";
+    } else if (par > 1 && impar <= 1) {
+      return par + " pares " + impar + " ímpar ";
+    } else {
+      return par + " pares " + impar + " ímpares ";
+    }
   }
 }
