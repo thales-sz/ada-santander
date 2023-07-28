@@ -1,5 +1,3 @@
-package aula07;
-
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
@@ -11,6 +9,7 @@ public class Solution {
     int[] input = { 2, 3 };
     System.out.println(parImpar(input));
     System.out.println(numeroPertenceASequenciaFibonacci(8));
+    System.out.println(somaAlgarismos(123));
   }
 
   public static String[] soletrandoStr(String input) {
@@ -84,5 +83,14 @@ public class Solution {
     } else {
       return par + " pares " + impar + " ímpares ";
     }
+  }
+
+  public static int somaAlgarismos(int input) {
+    String str = String.valueOf(input);
+    int soma = 0;
+    for (int i = 0; i < str.length(); i++) {
+      soma += Integer.valueOf(str.charAt(i));
+    }
+    return soma;
   }
 }

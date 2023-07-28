@@ -1,8 +1,4 @@
-package aula07.src;
-
 import java.util.Scanner;
-
-import aula07.src.utils.InvalidWeekDayException;
 
 public class Aula07Exercicio01 {
   public static void main(String[] args) {
