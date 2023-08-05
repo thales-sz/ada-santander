@@ -75,8 +75,8 @@ public class Aula01Exercicio01 {
     System.out.print("Digite o email do contato: ");
     String email = sc.nextLine();
 
-    Contact contact = new Contact();
-    contact.setName(name);
+    Contact contact = new Contact(name);
+    
     contact.setNumber(number);
     contact.setEmail(email);
 

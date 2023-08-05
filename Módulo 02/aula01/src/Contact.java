@@ -1,6 +1,8 @@
 public class Contact {
   String name, number, email;
 
+  Contact(final String name) {}
+
   public String getName() {
     return name;
   }
