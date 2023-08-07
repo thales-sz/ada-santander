@@ -12,13 +12,12 @@ class Bank {
 
   public void findAccount(int accountNumber) {
     for (Account account : this.accounts) {
-      System.out.println(account.accountNumber);
       if (account.accountNumber == accountNumber) {
         System.out.println(account.toString());
         break;
       }
-      System.out.println("Não foi possível encontrar a conta " + accountNumber);
     }
+    System.out.println("Não foi possível encontrar a conta " + accountNumber);
   }
 
   public void deposit(int accountNumber, double value) {

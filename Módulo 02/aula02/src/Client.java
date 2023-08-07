@@ -13,6 +13,7 @@ class Client {
     return this.cpf == client.cpf;
   }
 
+  @Override
   public String toString() {
     return "Client {" +
       "name='" + this.name + '\'' +

@@ -27,6 +27,7 @@ public class Account {
     return this.accountNumber == account.accountNumber;
   }
 
+  @Override
   public String toString() {
     return "Account {" +
       "client=" + this.client.toString() +
