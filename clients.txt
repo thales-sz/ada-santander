@@ -1,1 +1,0 @@
-Customer { id: 1, name: Thales, address: Rua 02, N 219 }
