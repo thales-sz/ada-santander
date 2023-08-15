@@ -12,7 +12,7 @@ public class Delivery {
     Scanner sc = new Scanner(System.in);
 
     System.out.println("Bem vindo ao sistema de delivery!");
-    customerController.createCustomer("João", "Rua 1");
+    customerController.createCustomer();
 
     sc.close();
   }
