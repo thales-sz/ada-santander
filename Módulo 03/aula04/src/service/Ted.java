@@ -1,0 +1,35 @@
+package service;
+
+
+import java.math.BigDecimal;
+
+import model.Conta;
+import utils.ValidarSenha;
+
+public class Ted {
+
+    private final ValidarSenha validaSenha;
+
+    public Ted(ValidarSenha validaSenha) {
+        this.validaSenha = validaSenha;
+    }
+
+    public Conta execute(Conta origem, Conta destino, BigDecimal valor, String senha) {
+        if (validaSenha.execute(origem, senha)) {
+            transfereDinheiro(origem, valor, destino);
+            System.out.println("Mensagem de integração com sistema TED");
+        } else {
+            System.out.println("Senha inválida. Tente novamente.");
+        }
+        return origem;
+    }
+
+    private void transfereDinheiro(Conta origem, BigDecimal valor, Conta destino) {
+        if (valor.compareTo(origem.getSaldo()) > 0) {
+            System.out.println("Saldo insuficiente");
+        } else {
+            origem.setSaldo(origem.getSaldo().subtract(valor));
+            destino.setSaldo(destino.getSaldo().add(valor));
+        }
+    }
+}
