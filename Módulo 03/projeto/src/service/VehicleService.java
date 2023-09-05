@@ -4,13 +4,19 @@ import java.util.List;
 
 import domain.Vehicle;
 import repository.GeneratePlate;
+import repository.VehicleRepository;
 
 public class VehicleService implements ServiceImp<Vehicle> {
+  private final VehicleRepository vehiclerRepository;
+
+  public VehicleService(VehicleRepository vehiclerRepository) {
+    this.vehiclerRepository = vehiclerRepository;
+  }
 
   @Override
   public Vehicle create(Vehicle entity) {
     entity.setPlate(GeneratePlate.newPlate());
-    return entity;
+    return this.vehiclerRepository.create(entity);
   }
 
   @Override
