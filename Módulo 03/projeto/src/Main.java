@@ -1,12 +1,8 @@
-import java.util.Scanner;
-
 import controller.VehicleController;
 import repository.VehicleRepository;
 import service.SelectOption;
 import service.VehicleRental;
 import service.VehicleService;
-import domain.Vehicle;
-import domain.VehicleType;
 
 public class Main {
   public static void main(String[] args) {
@@ -23,9 +19,11 @@ public class Main {
     while (isRunning) {
       isRunning = vehicleRental.execute();
     }
+
+    System.out.println("Obrigado por utilizar a ADA LocateCar - Locadora de veículos");
   }
 
-  public void lineBreak() {
+  public static void lineBreak() {
     System.out.println("----------------------------------------------------");
   }
 

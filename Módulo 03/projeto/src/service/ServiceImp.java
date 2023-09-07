@@ -1,14 +1,13 @@
 package service;
-import java.util.List;
-import java.util.Optional;
 
+import java.util.List;
 import domain.VehicleType;
 
 public interface ServiceImp<T> {
 
   T create(String model, String color, VehicleType type);
 
-  T update(Optional<T> entity);
+  T update(T entity);
 
   void delete(int id);
 

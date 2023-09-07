@@ -21,11 +21,9 @@ public class VehicleRental {
 
     switch (opcao) {
       case 0:
-        sc.close();
         return false;
       case 1:
         System.out.println("Cadastrar cliente");
-        sc.close();
         return true;
       case 2:
         System.out.println("Cadastrar veículo");
@@ -34,15 +32,13 @@ public class VehicleRental {
         System.out.println("Informe a cor do veículo:");
         String color = sc.nextLine();
         System.out.println("Informe o tipo do veículo:");
-        System.out.println(VehicleType.values());
+        System.out.println(VehicleType.getVehicleTypes());
         VehicleType type = VehicleType.valueOf(sc.nextLine());
         Vehicle vehicle = vehicleController.create(model, color, type);
         System.out.println(vehicle.toString());
-        sc.close();
         return true;
       default:
         selectOption.tryAgain();
-        sc.close();
         return true;
     }
   }

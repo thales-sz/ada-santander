@@ -1,7 +1,6 @@
 package service;
 
 import java.util.List;
-import java.util.Optional;
 
 import domain.Vehicle;
 import domain.VehicleType;
@@ -9,21 +8,21 @@ import repository.GeneratePlate;
 import repository.VehicleRepository;
 
 public class VehicleService implements ServiceImp<Vehicle> {
-  private final VehicleRepository vehiclerRepository;
+  private final VehicleRepository vehicleRepository;
 
-  public VehicleService(VehicleRepository vehiclerRepository) {
-    this.vehiclerRepository = vehiclerRepository;
+  public VehicleService(VehicleRepository vehicleRepository) {
+    this.vehicleRepository = vehicleRepository;
   }
 
   @Override
   public Vehicle create(String model, String color, VehicleType type) {
-    Vehicle entity = new Vehicle(color, model, type);
+    Vehicle entity = new Vehicle(model, color, type);
     entity.setPlate(GeneratePlate.newPlate());
-    return this.vehiclerRepository.create(entity);
+    return this.vehicleRepository.create(entity);
   }
 
   @Override
-  public Vehicle update(Optional<Vehicle> entity) {
+  public Vehicle update(Vehicle entity) {
     throw new UnsupportedOperationException("Unimplemented method 'update'");
   }
 

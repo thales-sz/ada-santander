@@ -16,8 +16,8 @@ public class SelectOption {
     System.out.println("9 - Devolver um veículo");
     System.out.println("0 - Sair");
 
-    Scanner scanner = new Scanner(System.in);
-    return scanner.nextInt();
+    Scanner sc = new Scanner(System.in);
+    return sc.nextInt();
   }
 
   public boolean tryAgain() {
