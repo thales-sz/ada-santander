@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import domain.Vehicle;
+import domain.VehicleType;
 import service.VehicleService;
 
 public class VehicleController implements ControllerImp<Vehicle> {
@@ -13,8 +14,8 @@ public class VehicleController implements ControllerImp<Vehicle> {
   }
 
   @Override
-  public Vehicle create(Vehicle entity) {
-    return vehicleService.create(entity);
+  public Vehicle create(String model, String color, VehicleType type) {
+    return vehicleService.create(model,color, type);
   }
 
   @Override

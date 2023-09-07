@@ -1,9 +1,5 @@
 package domain;
 
-enum VehicleType {
-  PEQUENO, MEDIO, SUV
-}
-
 public class Vehicle {
   protected int id;
   protected String color;
@@ -12,7 +8,7 @@ public class Vehicle {
   protected VehicleType type;
   
 
-  public Vehicle(String color, String model, VehicleType type) {
+  public Vehicle(String model, String color, VehicleType type) {
     this.color = color;
     this.model = model;
     this.type = type;
@@ -20,7 +16,7 @@ public class Vehicle {
 
   @Override
   public String toString() {
-    return "Vehicle {\nid: " + id + "\ncor: " + color + "\nmodelo: " + model + "\nplaca: " + plate + "\n}";
+    return "Vehicle {\nid: " + id + "\ncor: " + color + "\nmodelo: " + model + "\nplaca: " + plate + "\ntipo: " + type + "\n}";
   }
 
   public void setPlate(String plate) {
