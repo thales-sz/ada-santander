@@ -1,26 +1,34 @@
-package repository;
+package service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GeneratePlate {
 
     private static final String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
     private static final Random random = new Random();
+    private static final List<String> plates = new ArrayList<>();
 
     public static String newPlate() {
-        StringBuilder placa = new StringBuilder();
+        StringBuilder plate = new StringBuilder();
 
         for (int i = 0; i < 3; i++) {
             int index = random.nextInt(letters.length);
-            placa.append(letters[index]);
+            plate.append(letters[index]);
         }
 
         for (int i = 0; i < 4; i++) {
-            int digito = random.nextInt(10);
-            placa.append(digito);
+            int digit = random.nextInt(10);
+            plate.append(digit);
+        }
+        
+        if(plates.contains(plate.toString())) {
+            return newPlate();
         }
 
-        return placa.toString();
+        plates.add(plate.toString());
+        return plate.toString();
     }
 
     public static String execute(String[] args) {

@@ -35,6 +35,6 @@ public class VehicleController implements ControllerImp<Vehicle> {
 
   @Override
   public List<Vehicle> findAll() {
-    throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+    return this.vehicleService.findAll();
   }
 }

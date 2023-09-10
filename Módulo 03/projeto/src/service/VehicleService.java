@@ -4,7 +4,6 @@ import java.util.List;
 
 import domain.Vehicle;
 import domain.VehicleType;
-import repository.GeneratePlate;
 import repository.VehicleRepository;
 
 public class VehicleService implements ServiceImp<Vehicle> {
@@ -16,9 +15,9 @@ public class VehicleService implements ServiceImp<Vehicle> {
 
   @Override
   public Vehicle create(String model, String color, VehicleType type) {
-    Vehicle entity = new Vehicle(model, color, type);
-    entity.setPlate(GeneratePlate.newPlate());
-    return this.vehicleRepository.create(entity);
+    Vehicle vehicle = new Vehicle(model, color, type);
+    vehicle.setPlate(GeneratePlate.newPlate());
+    return this.vehicleRepository.create(vehicle);
   }
 
   @Override
@@ -38,6 +37,6 @@ public class VehicleService implements ServiceImp<Vehicle> {
 
   @Override
   public List<Vehicle> findAll() {
-    throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+    return this.vehicleRepository.findAll();
   }
 }
