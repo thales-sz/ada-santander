@@ -5,13 +5,15 @@ import java.util.List;
 import domain.VehicleType;
 
 public interface ControllerImp<T> {
-  T create(String model, String color, VehicleType type);
+  T create(T entity);
 
   T update(T entity);
 
   void delete(int id);
 
-  T findOne(T entity);
+  T findOneById(T entity);
+
+  T findOneBySearchTerm(String searchTerm);
 
   List<T> findAll();
 }

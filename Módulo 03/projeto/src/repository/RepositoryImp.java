@@ -10,7 +10,9 @@ public interface RepositoryImp<T> {
 
   void delete(int id);
 
-  T findOne(T entity);
+  boolean findOneById(T entity);
+
+  T findOneBySearchTerm(String searchTerm);
 
   List<T> findAll();
 }

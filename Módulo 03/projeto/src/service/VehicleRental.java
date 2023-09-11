@@ -2,17 +2,21 @@ package service;
 
 import java.util.Scanner;
 
+import controller.PersonController;
 import controller.VehicleController;
+import domain.Person;
 import domain.Vehicle;
 import domain.VehicleType;
 
 public class VehicleRental {
   private final SelectOption selectOption;
   private final VehicleController vehicleController;
+  private final PersonController personController;
 
-  public VehicleRental(SelectOption selectOption, VehicleController vehicleController) {
+  public VehicleRental(SelectOption selectOption, VehicleController vehicleController, PersonController personController) {
     this.selectOption = selectOption;
     this.vehicleController = vehicleController;
+    this.personController = personController;
   }
 
   public boolean execute() {
@@ -22,48 +26,31 @@ public class VehicleRental {
       case 0:
         return false;
       case 1:
-        System.out.println("Cadastrar cliente");
+        Person person = CreatePerson.execute();
+        this.personController.create(person);
         return true;
-      case 2:
-        this.createVehicle();
+      case 2: // criar veiculo
+        Vehicle vehicle = CreateVehicle.execute();
         return true;
-      case 3:
+      case 3: // listar clientes
         return true;
-      case 4:
+      case 4: // listar veiculos
         this.findAllVehicles();
+        return true;
+      case 5: // alterar veiculo
+        return true;
+      case 6: // encontrar veiculo
+        return true;
+      case 7:
+        return true;
+      case 8:
+        return true;
+      case 9:
         return true;
       default:
         selectOption.tryAgain();
         return true;
     }
-  }
-
-  private void createVehicle() {
-    Scanner sc = new Scanner(System.in);
-    System.out.println("Cadastrar veículo");
-    System.out.println("Informe o modelo do veículo:");
-    String model = sc.nextLine();
-    System.out.println("Informe a cor do veículo:");
-    String color = sc.nextLine();
-    System.out.println("Informe o tipo do veículo:");
-    System.out.println(VehicleType.getVehicleTypes());
-    String vehicleType = sc.nextLine();
-
-    boolean isTypeValid = false;
-
-    while (!isTypeValid) {
-      if (VehicleType.getVehicleTypes().contains(vehicleType.toUpperCase())) {
-        isTypeValid = true;
-        break;
-      } else {
-        System.out.println("Tipo de veículo inválido. Tente novamente:");
-        vehicleType = sc.nextLine();
-      }
-    }
-
-    VehicleType type = VehicleType.valueOf(vehicleType.toUpperCase());
-    Vehicle vehicle = vehicleController.create(model, color, type);
-    System.out.println(vehicle.toString());
   }
 
   private void findAllVehicles() {

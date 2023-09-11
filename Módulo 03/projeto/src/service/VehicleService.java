@@ -3,7 +3,6 @@ package service;
 import java.util.List;
 
 import domain.Vehicle;
-import domain.VehicleType;
 import repository.VehicleRepository;
 
 public class VehicleService implements ServiceImp<Vehicle> {
@@ -14,25 +13,41 @@ public class VehicleService implements ServiceImp<Vehicle> {
   }
 
   @Override
-  public Vehicle create(String model, String color, VehicleType type) {
-    Vehicle vehicle = new Vehicle(model, color, type);
-    vehicle.setPlate(GeneratePlate.newPlate());
-    return this.vehicleRepository.create(vehicle);
+  public Vehicle create(Vehicle entity) {
+    entity.setPlate(GeneratePlate.newPlate());
+    return this.vehicleRepository.create(entity);
   }
 
   @Override
   public Vehicle update(Vehicle entity) {
-    throw new UnsupportedOperationException("Unimplemented method 'update'");
+    boolean vehicle = this.vehicleRepository.findOneById(entity);
+
+    if (!vehicle) {
+      throw new RuntimeException("Vehicle not found");
+    }
+
+    return this.vehicleRepository.update(entity);
   }
 
   @Override
   public void delete(int id) {
-    throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    this.vehicleRepository.delete(id);
   }
 
   @Override
-  public Vehicle findOne(Vehicle entity) {
-    throw new UnsupportedOperationException("Unimplemented method 'findOne'");
+  public Vehicle findOneById(Vehicle entity) {
+    boolean vehicle = this.vehicleRepository.findOneById(entity);
+
+    if (!vehicle) {
+      throw new RuntimeException("Vehicle not found");
+    }
+
+    return entity;
+  }
+
+  @Override
+  public Vehicle findOneBySearchTerm(String searchTerm) {
+    return this.vehicleRepository.findOneBySearchTerm(searchTerm);
   }
 
   @Override

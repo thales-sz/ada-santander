@@ -1,3 +1,4 @@
+import controller.PersonController;
 import controller.VehicleController;
 import repository.VehicleRepository;
 import service.SelectOption;
@@ -9,8 +10,9 @@ public class Main {
     final VehicleRepository vehicleRepository = new VehicleRepository();
     final VehicleService vehicleService = new VehicleService(vehicleRepository);
     final VehicleController vehicleController = new VehicleController(vehicleService);
+    final PersonController personController = new PersonController();
     final SelectOption selectOption = new SelectOption();
-    final VehicleRental vehicleRental = new VehicleRental(selectOption, vehicleController);
+    final VehicleRental vehicleRental = new VehicleRental(selectOption, vehicleController, personController);
 
     System.out.println("Bem-vindo à ADA LocateCar - Locadora de veículos");
 

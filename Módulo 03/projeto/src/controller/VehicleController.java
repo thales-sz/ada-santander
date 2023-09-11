@@ -14,23 +14,28 @@ public class VehicleController implements ControllerImp<Vehicle> {
   }
 
   @Override
-  public Vehicle create(String model, String color, VehicleType type) {
-    return vehicleService.create(model,color, type);
+  public Vehicle create(Vehicle entity) {
+    return vehicleService.create(entity);
   }
 
   @Override
   public Vehicle update(Vehicle entity) {
-    throw new UnsupportedOperationException("Unimplemented method 'update'");
+    return this.vehicleService.update(entity);
   }
 
   @Override
   public void delete(int id) {
-    throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    this.vehicleService.delete(id);
   }
 
   @Override
-  public Vehicle findOne(Vehicle entity) {
-    throw new UnsupportedOperationException("Unimplemented method 'findOne'");
+  public Vehicle findOneById(Vehicle entity) {
+    return this.vehicleService.findOneById(entity);
+  }
+
+  @Override
+  public Vehicle findOneBySearchTerm(String searchTerm) {
+    return this.vehicleService.findOneBySearchTerm(searchTerm);
   }
 
   @Override
