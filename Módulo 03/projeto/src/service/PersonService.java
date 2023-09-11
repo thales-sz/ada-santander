@@ -3,13 +3,19 @@ package service;
 import java.util.List;
 
 import domain.Person;
+import repository.PersonRepository;
 
 public class PersonService implements ServiceImp<Person> {
 
+  private final PersonRepository personRepository;
+
+  public PersonService(PersonRepository personRepository) {
+    this.personRepository = personRepository;
+  }
+
   @Override
   public Person create(Person entity) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'create'");
+    return this.personRepository.create(entity);
   }
 
   @Override

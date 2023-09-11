@@ -15,7 +15,9 @@ public class VehicleController implements ControllerImp<Vehicle> {
 
   @Override
   public Vehicle create(Vehicle entity) {
-    return vehicleService.create(entity);
+    Vehicle createdVehicle = vehicleService.create(entity);
+    System.out.println("Veículo criado: " + createdVehicle.toString());
+    return createdVehicle;
   }
 
   @Override

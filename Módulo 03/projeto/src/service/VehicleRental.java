@@ -31,6 +31,7 @@ public class VehicleRental {
         return true;
       case 2: // criar veiculo
         Vehicle vehicle = CreateVehicle.execute();
+        this.vehicleController.create(vehicle);
         return true;
       case 3: // listar clientes
         return true;

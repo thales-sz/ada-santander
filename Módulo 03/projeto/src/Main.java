@@ -1,6 +1,8 @@
 import controller.PersonController;
 import controller.VehicleController;
+import repository.PersonRepository;
 import repository.VehicleRepository;
+import service.PersonService;
 import service.SelectOption;
 import service.VehicleRental;
 import service.VehicleService;
@@ -10,7 +12,9 @@ public class Main {
     final VehicleRepository vehicleRepository = new VehicleRepository();
     final VehicleService vehicleService = new VehicleService(vehicleRepository);
     final VehicleController vehicleController = new VehicleController(vehicleService);
-    final PersonController personController = new PersonController();
+    final PersonRepository personRepository = new PersonRepository();
+    final PersonService personService = new PersonService(personRepository);
+    final PersonController personController = new PersonController(personService);
     final SelectOption selectOption = new SelectOption();
     final VehicleRental vehicleRental = new VehicleRental(selectOption, vehicleController, personController);
 
