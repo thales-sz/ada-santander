@@ -3,9 +3,9 @@ import controller.VehicleController;
 import repository.PersonRepository;
 import repository.VehicleRepository;
 import service.PersonService;
-import service.SelectOption;
 import service.VehicleRental;
 import service.VehicleService;
+import utils.SelectOption;
 
 public class Main {
   public static void main(String[] args) {

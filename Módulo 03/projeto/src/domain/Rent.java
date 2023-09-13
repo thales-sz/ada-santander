@@ -7,8 +7,8 @@ public class Rent {
   protected Vehicle rentedVehicle;
   protected Person leasingPerson;
   protected Person tenantPerson;
-  protected String local;
-  protected Date date;
+  protected Date rentalDate;
+  protected Date returnDate;
   protected int hours;
 
   public Person getLeasingPerson() {

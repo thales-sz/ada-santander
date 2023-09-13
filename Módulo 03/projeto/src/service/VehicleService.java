@@ -4,6 +4,7 @@ import java.util.List;
 
 import domain.Vehicle;
 import repository.VehicleRepository;
+import utils.GeneratePlate;
 
 public class VehicleService implements ServiceImp<Vehicle> {
   private final VehicleRepository vehicleRepository;

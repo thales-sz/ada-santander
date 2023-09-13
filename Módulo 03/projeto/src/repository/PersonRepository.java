@@ -2,7 +2,6 @@ package repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import domain.Person;
 
 public class PersonRepository implements RepositoryImp<Person>{
@@ -20,26 +19,41 @@ public class PersonRepository implements RepositoryImp<Person>{
 
   @Override
   public Person update(Person entity) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'update'");
+    for(Person person : people) {
+      if(person.getId() == entity.getId()) {
+        people.set(people.indexOf(person), entity);
+      }
+    }
+    return people.get(people.indexOf(entity));
   }
 
   @Override
   public void delete(int id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    for(Person person : people) {
+      if(person.getId() == id) {
+        people.remove(id);
+      }
+    }
   }
 
   @Override
   public boolean findOneById(Person entity) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'findOneById'");
+    for (Person person : people) {
+      if (person.getId() == entity.getId()) {
+        return true;
+      }
+    }
+    return false;
   }
 
   @Override
   public Person findOneBySearchTerm(String searchTerm) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'findOneBySearchTerm'");
+    for(Person person : people) {
+      if(person.getName().equalsIgnoreCase(searchTerm)) {
+        return person;
+      }
+    }
+    return null;
   }
 
   @Override

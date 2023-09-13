@@ -1,12 +1,12 @@
 package service;
 
-import java.util.Scanner;
-
 import controller.PersonController;
 import controller.VehicleController;
 import domain.Person;
 import domain.Vehicle;
-import domain.VehicleType;
+import usecases.CreatePerson;
+import usecases.CreateVehicle;
+import utils.SelectOption;
 
 public class VehicleRental {
   private final SelectOption selectOption;
@@ -43,11 +43,11 @@ public class VehicleRental {
         return true;
       case 6: // encontrar veiculo
         return true;
-      case 7:
+      case 7: // altera um cliente
         return true;
-      case 8:
+      case 8: // alugar um veiculo
         return true;
-      case 9:
+      case 9: // devolver um veiculo
         return true;
       default:
         selectOption.tryAgain();

@@ -32,7 +32,7 @@ public class VehicleRepository implements RepositoryImp<Vehicle> {
   public void delete(int id) {
     for(Vehicle vehicle : vehicles) {
       if(vehicle.getId() == id) {
-        vehicles.remove(vehicle);
+        vehicles.remove(id);
       }
     }
   }
