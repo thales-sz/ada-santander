@@ -34,7 +34,7 @@ public class VehicleRental {
         this.vehicleController.create(vehicle);
         return true;
       case 3: // listar clientes
-        this.personController.findAll();
+        this.findAllPeople();
         return true;
       case 4: // listar veiculos
         this.findAllVehicles();
@@ -62,5 +62,14 @@ public class VehicleRental {
       return;
     }
     System.out.println(vehicleController.findAll());
+  }
+
+  private void findAllPeople() {
+    System.out.println("Listar pessoas");
+    if (personController.findAll().isEmpty()) {
+      System.out.println("Nenhuma pessoas cadastrada.");
+      return;
+    }
+    System.out.println(personController.findAll());
   }
 }
