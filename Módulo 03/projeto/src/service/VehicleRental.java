@@ -34,6 +34,7 @@ public class VehicleRental {
         this.vehicleController.create(vehicle);
         return true;
       case 3: // listar clientes
+        this.personController.findAll();
         return true;
       case 4: // listar veiculos
         this.findAllVehicles();

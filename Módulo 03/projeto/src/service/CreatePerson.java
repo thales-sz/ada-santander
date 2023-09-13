@@ -28,14 +28,14 @@ public class CreatePerson {
 
   public static LegalPerson createLegalPerson(String name) {
     Scanner sc = new Scanner(System.in);
-    System.out.println("Digite o CNPJ da empresa:");
+    System.out.println("Digite o CNPJ da pessoa:");
     String cnpj = sc.nextLine();
     return new LegalPerson(name, cnpj);
   }
 
   public static Person createNaturalPerson(String name) {
     Scanner sc = new Scanner(System.in);
-    System.out.println("Digite o CPF do cliente:");
+    System.out.println("Digite o CPF da pessoa:");
     String cpf = sc.nextLine();
     return new NaturalPerson(name, cpf);
   }

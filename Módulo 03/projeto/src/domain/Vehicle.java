@@ -6,6 +6,7 @@ public class Vehicle {
   protected String plate;
   protected String model;
   protected VehicleType type;
+  protected boolean isRented;
   
 
   public Vehicle(String model, String color, VehicleType type) {
@@ -41,5 +42,17 @@ public class Vehicle {
 
   public String getModel() {
     return model;
+  }
+
+  public VehicleType getType() {
+    return type;
+  }
+
+  public boolean isRented() {
+    return isRented;
+  }
+
+  public void setRented(boolean isRented) {
+    this.isRented = isRented;
   }
 }

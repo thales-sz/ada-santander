@@ -7,4 +7,9 @@ public class NaturalPerson extends Person {
     super(name);
     this.cpf = cpf;
   }
+
+  @Override
+  public String toString() {
+    return "Natural Person {\nid: " + id + "\nnome: " + name + "\ncpf: " + cpf + "\n}";
+  }
 }

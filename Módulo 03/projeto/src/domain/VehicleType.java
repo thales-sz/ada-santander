@@ -5,18 +5,24 @@ import java.util.List;
 
 public enum VehicleType {
 
-  PEQUENO("PEQUENO"),
-  MEDIO("MEDIO"),
-  SUV("SUV");
+  PEQUENO("PEQUENO", 100),
+  MEDIO("MEDIO", 150),
+  SUV("SUV", 200);
 
   private String type;
+  private int value;
 
-  private VehicleType(String nome) {
+  private VehicleType(String nome, int value) {
     this.type = nome;
+    this.value = value;
   }
 
   public String getType() {
     return type;
+  }
+
+  public int getValue() {
+    return value;
   }
 
   public static List<String> getVehicleTypes() {

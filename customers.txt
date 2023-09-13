@@ -1,3 +1,0 @@
-Customer { id: 1, name: Thales, address: Rua 02, N 219 }
-Customer { id: 1, name: jason, address: rua 07 }
-Customer { id: 1, name: Pyetinha, address: Core do Thalinhos }

@@ -44,8 +44,7 @@ public class PersonRepository implements RepositoryImp<Person>{
 
   @Override
   public List<Person> findAll() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+    return this.people;
   }
   
 }

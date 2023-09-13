@@ -7,5 +7,10 @@ public class LegalPerson extends Person {
     super(name);
     this.cnpj = cnpj;
   }
+
+  @Override
+  public String toString() {
+    return "Natural Person {\nid: " + id + "\nnome: " + name + "\ncnpj: " + cnpj + "\n}";
+  }
 }
 

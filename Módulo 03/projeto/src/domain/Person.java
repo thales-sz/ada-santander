@@ -11,4 +11,17 @@ public class Person {
   public void setId(int id) {
     this.id = id;
   }
+
+  public int getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  @Override
+  public String toString() {
+    return "Person {\nid: " + id + "\nnome: " + name + "\n}";
+  }
 }
