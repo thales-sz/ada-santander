@@ -44,6 +44,7 @@ public class PersonController implements ControllerImp<Person> {
         return create();
     }
 
+    createdPerson = this.personService.create(createdPerson);
     System.out.println("Pessoa cadastrada: " + createdPerson.toString());
     return createdPerson;
   }
