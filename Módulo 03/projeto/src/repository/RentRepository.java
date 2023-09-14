@@ -20,32 +20,41 @@ public class RentRepository implements RepositoryImp<Rent> {
 
   @Override
   public void delete(int id) {
-    // TODO Auto-generated method stub
-    
+    for (Rent rent : vehicles) {
+      if (rent.getId() == id) {
+        vehicles.remove(id);
+      }
+    }
   }
 
   @Override
   public List<Rent> findAll() {
-    // TODO Auto-generated method stub
-    return null;
+    return this.vehicles;
   }
 
   @Override
   public boolean findOneById(Rent entity) {
-    // TODO Auto-generated method stub
+    for (Rent rent : vehicles) {
+      if (rent.getId() == entity.getId()) {
+        return true;
+      }
+    }
     return false;
   }
 
   @Override
   public Rent findOneBySearchTerm(String searchTerm) {
-    // TODO Auto-generated method stub
     return null;
   }
 
   @Override
   public Rent update(Rent entity) {
-    // TODO Auto-generated method stub
-    return null;
+    for (Rent rent : vehicles) {
+      if (rent.getId() == entity.getId()) {
+        vehicles.set(vehicles.indexOf(rent), entity);
+      }
+    }
+    return vehicles.get(vehicles.indexOf(entity));
   }
   
 }
