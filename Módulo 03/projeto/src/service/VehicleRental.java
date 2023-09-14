@@ -2,10 +2,6 @@ package service;
 
 import controller.PersonController;
 import controller.VehicleController;
-import domain.Person;
-import domain.Vehicle;
-import usecases.CreatePerson;
-import usecases.CreateVehicle;
 import utils.SelectOption;
 
 public class VehicleRental {
@@ -26,17 +22,15 @@ public class VehicleRental {
       case 0:
         return false;
       case 1:
-        Person person = CreatePerson.execute();
-        this.personController.create(person);
+        this.personController.create();
         return true;
-      case 2: // criar veiculo
-        Vehicle vehicle = CreateVehicle.execute();
-        this.vehicleController.create(vehicle);
+      case 2:
+        this.vehicleController.create();
         return true;
-      case 3: // listar clientes
+      case 3:
         this.findAllPeople();
         return true;
-      case 4: // listar veiculos
+      case 4:
         this.findAllVehicles();
         return true;
       case 5: // alterar veiculo

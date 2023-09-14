@@ -2,10 +2,8 @@ package controller;
 
 import java.util.List;
 
-import domain.VehicleType;
-
 public interface ControllerImp<T> {
-  T create(T entity);
+  T create();
 
   T update(T entity);
 

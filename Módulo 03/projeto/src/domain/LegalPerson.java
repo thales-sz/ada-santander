@@ -12,5 +12,9 @@ public class LegalPerson extends Person {
   public String toString() {
     return "Natural Person {\nid: " + id + "\nnome: " + name + "\ncnpj: " + cnpj + "\n}";
   }
+
+  public String getCnpj() {
+    return this.cnpj;
+  }
 }
 

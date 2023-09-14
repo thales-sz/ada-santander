@@ -9,7 +9,6 @@ public class Rent {
   protected Person tenantPerson;
   protected Date rentalDate;
   protected Date returnDate;
-  protected int hours;
 
   public Person getLeasingPerson() {
     return leasingPerson;
@@ -21,5 +20,13 @@ public class Rent {
 
   public Person getTenantPerson() {
     return tenantPerson;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public int getId() {
+    return id;
   }
 }

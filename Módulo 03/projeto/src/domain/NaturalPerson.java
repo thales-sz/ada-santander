@@ -12,4 +12,8 @@ public class NaturalPerson extends Person {
   public String toString() {
     return "Natural Person {\nid: " + id + "\nnome: " + name + "\ncpf: " + cpf + "\n}";
   }
+
+  public String getCpf() {
+    return cpf;
+  }
 }

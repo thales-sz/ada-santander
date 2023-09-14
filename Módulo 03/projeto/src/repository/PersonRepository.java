@@ -2,6 +2,9 @@ package repository;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import domain.LegalPerson;
+import domain.NaturalPerson;
 import domain.Person;
 
 public class PersonRepository implements RepositoryImp<Person>{
@@ -48,8 +51,15 @@ public class PersonRepository implements RepositoryImp<Person>{
 
   @Override
   public Person findOneBySearchTerm(String searchTerm) {
+    System.out.println(searchTerm);
     for(Person person : people) {
       if(person.getName().equalsIgnoreCase(searchTerm)) {
+        return person;
+      }
+      if (((NaturalPerson) person).getCpf().equals(searchTerm)) {
+        return person;
+      }
+      if (((LegalPerson) person).getCnpj().equals(searchTerm)) {
         return person;
       }
     }

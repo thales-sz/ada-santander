@@ -1,7 +1,10 @@
 package controller;
 
 import java.util.List;
+import java.util.Scanner;
 
+import domain.LegalPerson;
+import domain.NaturalPerson;
 import domain.Person;
 import service.PersonService;
 
@@ -14,8 +17,33 @@ public class PersonController implements ControllerImp<Person> {
   }
   
   @Override
-  public Person create(Person entity) {
-    Person createdPerson = this.personService.create(entity);
+  public Person create() {
+    Person createdPerson;
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Digite o nome do cliente:");
+    String name = sc.nextLine();
+    System.out.println("Digite o tipo de cliente:");
+    System.out.println("1 - Pessoa Física");
+    System.out.println("2 - Pessoa Jurídica");
+    int option = sc.nextInt();
+    sc.nextLine();
+
+    switch (option) {
+      case 1:
+        System.out.println("Digite o CPF da pessoa:");
+        String cpf = sc.nextLine();
+        createdPerson = this.personService.createNaturalPerson(name, cpf);
+        break;
+      case 2:
+        System.out.println("Digite o CPF da pessoa:");
+        String cnpj = sc.nextLine();
+        createdPerson = this.personService.createLegalPerson(name, cnpj);
+        break;
+      default:
+        System.out.println("Opção inválida. Tente novamente.");
+        return create();
+    }
+
     System.out.println("Pessoa cadastrada: " + createdPerson.toString());
     return createdPerson;
   }
@@ -48,5 +76,4 @@ public class PersonController implements ControllerImp<Person> {
   public List<Person> findAll() {
     return this.personService.findAll();
   }
-  
 }
