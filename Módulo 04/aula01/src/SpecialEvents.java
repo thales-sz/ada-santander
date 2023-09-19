@@ -3,8 +3,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class SpecialEvents {
-
-
   public LocalDate firstEvent() {
     LocalDate birthDate = LocalDate.of(2000, 10, 31);
     return birthDate;
