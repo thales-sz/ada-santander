@@ -1,7 +1,7 @@
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-public class Exercicio03 {
+public class Exercicio03aula02 {
   ZoneId newYork = ZoneId.of("America/New_York");
   ZoneId paris = ZoneId.of("Europe/Paris");
   ZoneId tokyo = ZoneId.of("Asia/Tokyo");

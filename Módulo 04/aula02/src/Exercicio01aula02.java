@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Exercicio01 {
+public class Exercicio01aula02 {
   List<String> stringDates = new ArrayList<>();
 
   public void execute() {

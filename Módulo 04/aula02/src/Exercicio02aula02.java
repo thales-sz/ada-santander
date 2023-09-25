@@ -3,7 +3,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Exercicio02 {
+public class Exercicio02aula02 {
   List<LocalDate> datas = new ArrayList<>(); 
 
   public void execute() {

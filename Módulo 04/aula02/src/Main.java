@@ -28,12 +28,12 @@ public class Main {
   }
 
   public static void exercicio02() {
-    Exercicio02 exercicio02 = new Exercicio02();
+    Exercicio02aula02 exercicio02 = new Exercicio02aula02();
     exercicio02.execute();
   }
 
   public static void exercicio03() {
-    Exercicio03 exercicio03 = new Exercicio03();
+    Exercicio03aula02 exercicio03 = new Exercicio03aula02();
     exercicio03.execute();
   }
 }
