@@ -16,5 +16,24 @@ public class Main {
     LocalDate firstDose = LocalDate.of(year, month, day);
     vaccineSchedule.execute(firstDose);
     sc.close();
+
+    exercicio01();
+    exercicio02();
+    exercicio03();
+  }
+
+  public static void exercicio01() {
+    Exercicio01 exercicio01 = new Exercicio01();
+    exercicio01.execute();
+  }
+
+  public static void exercicio02() {
+    Exercicio02 exercicio02 = new Exercicio02();
+    exercicio02.execute();
+  }
+
+  public static void exercicio03() {
+    Exercicio03 exercicio03 = new Exercicio03();
+    exercicio03.execute();
   }
 }
