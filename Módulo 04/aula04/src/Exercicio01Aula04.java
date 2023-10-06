@@ -18,8 +18,8 @@ public class Exercicio01Aula04 {
   public void mapForPrice() {
     System.out.println("Preços dos produtos map:");
     produtos.stream()
-        .map(p -> p.getPrice())
-        .forEach(p -> System.out.println(p));
+        .map(Product::getPrice)
+        .forEach(System.out::println);
   }
 
   public void cheapestProduct() {
