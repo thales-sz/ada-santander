@@ -26,7 +26,7 @@ public class Product {
   private String urlImage;
 
   @Column(name = "created_at")
-  @Temporal(TemporalType.TIMESTAMP)
+  @Temporal(TemporalType.DATE)
   private Date createdAt;
 
   @Column(name = "updated_at")
