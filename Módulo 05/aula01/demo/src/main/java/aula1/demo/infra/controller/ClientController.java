@@ -1,4 +1,4 @@
-package aula1.demo.controller;
+package infra.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
