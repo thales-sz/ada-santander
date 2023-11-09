@@ -3,8 +3,6 @@ package model;
 import org.junit.Assert;
 import org.junit.Test;
 
-import model.Calculadora;
-
 public class CalculadoraTest {
   @Test
   public void deveIniciarDesligada() {
@@ -33,8 +31,8 @@ public class CalculadoraTest {
     
     calculadora.ligar();
 
-    Throwable throwable = Assert.assertThrows(ArithmeticException.class, () -> {
-      calculadora.divisao(10, 0);
+    Throwable throwable = Assert.assertThrows(Exception.class, () -> {
+      calculadora.divisao(10.0, 0.0);
     });
 
     Assert.assertEquals("Não existe divisão por zero!", throwable.getMessage());
@@ -46,7 +44,7 @@ public class CalculadoraTest {
     
     calculadora.ligar();
 
-    Assert.assertEquals(15, calculadora.soma(10, 5));
+    Assert.assertEquals((Double) 15.0, calculadora.soma(10.0, 5.0));
   }
 
   @Test
@@ -55,6 +53,6 @@ public class CalculadoraTest {
     
     calculadora.ligar();
 
-    Assert.assertEquals(5, calculadora.subtracao(10.72345, 5.7845));
+    Assert.assertEquals((Double) 4.9389, calculadora.subtracao(10.72345, 5.7845), 0.0001);
   }
 }

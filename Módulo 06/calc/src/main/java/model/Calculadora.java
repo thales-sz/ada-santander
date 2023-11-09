@@ -4,19 +4,24 @@ public class Calculadora {
   private Boolean status;
   private Double resultado;
 
+  public Calculadora() {
+    this.status = false;
+    this.resultado = 0.0;
+  }
+
   public Double soma(Double a, Double b) {
-    resultado = a + b;
-    return resultado;
+    this.resultado = a + b;
+    return this.resultado;
   }
 
   public Double subtracao(Double a, Double b) {
-    resultado = a - b;
-    return resultado;
+    this.resultado = a - b;
+    return this.resultado;
   }
 
   public Double multiplicacao(Double a, Double b) {
-    resultado = a * b;
-    return resultado;
+    this.resultado = a * b;
+    return this.resultado;
   }
 
   public Double divisao(Double a, Double b) throws Exception {
@@ -25,19 +30,19 @@ public class Calculadora {
       throw new Exception("Não existe divisão por zero!");
     }
 
-    resultado = a / b;
-    return resultado;
+    this.resultado = a / b;
+    return this.resultado;
   }
 
   public void ligar() {
-    status = true;
+    this.status = true;
   }
 
   public void desligar() {
-    status = true;
+    this.status = false;
   }
 
   public Boolean getStatus() {
-    return status;
+    return this.status;
   }
 }
