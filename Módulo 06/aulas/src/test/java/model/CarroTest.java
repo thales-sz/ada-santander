@@ -1,7 +1,8 @@
 package model;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class CarroTest {
   
@@ -9,7 +10,7 @@ public class CarroTest {
   public void deveIniciarDesligado() {
     Carro carro_01 = new Carro();
     
-    Assert.assertFalse(carro_01.getLigado());
+    assertFalse(carro_01.getLigado());
   }
 
   @Test
@@ -21,11 +22,11 @@ public class CarroTest {
     carro_02.ligar();
 
     // Then
-    Assert.assertEquals((Integer) 0, carro_02.getVelocidadeAtual());
+    assertEquals((Integer) 0, carro_02.getVelocidadeAtual());
   }
 
   @Test
-  public void deveAcelerarCorretamente() {
+  public void deveAcelerarCorretamente() throws Exception {
     // Given
     Carro carro = new Carro();
     
@@ -34,7 +35,7 @@ public class CarroTest {
     carro.acelerar(15);
 
     // Then
-    Assert.assertEquals((Integer) 15, carro.getVelocidadeAtual());
+    assertEquals((Integer) 15, carro.getVelocidadeAtual());
   }
 
 
@@ -46,7 +47,7 @@ public class CarroTest {
     carro_03.ligar();
 
     // Then (Então)
-    Assert.assertTrue(carro_03.getLigado());
+    assertTrue(carro_03.getLigado());
   }
 
   @Test
@@ -57,11 +58,11 @@ public class CarroTest {
     carro_04.ligar();
     carro_04.desligar();
 
-    Assert.assertFalse(carro_04.getLigado());
+    assertFalse(carro_04.getLigado());
   }
 
   @Test
-  public void deveSeManterNoLimiteDeVelocidade() {
+  public void deveSeManterNoLimiteDeVelocidade() throws Exception {
     Carro carro_06 = new Carro();
 
     // When
@@ -71,11 +72,11 @@ public class CarroTest {
     carro_06.acelerar(100);
 
     // Then
-    Assert.assertEquals(carro_06.getVelocidadeMaxima(), carro_06.getVelocidadeAtual());
+    assertEquals(carro_06.getVelocidadeMaxima(), carro_06.getVelocidadeAtual());
   }
 
   @Test
-  public void deveSeManterNoLimiteDeVelocidadeOutroAssert() {
+  public void deveSeManterNoLimiteDeVelocidadeOutroAssert() throws Exception {
     Carro carro_07 = new Carro();
     // //When(Quando)
     carro_07.ligar();
@@ -83,17 +84,131 @@ public class CarroTest {
     carro_07.acelerar(150);
 
     // //Then(Então)
-    Assert.assertEquals((Integer) 200, carro_07.getVelocidadeAtual());
+    assertEquals(200, carro_07.getVelocidadeAtual());
   }
 
   @Test
-  public void velocidadeNaoDeveSerMenorQueZero() {
+  public void velocidadeNaoDeveSerMenorQueZero() throws Exception {
     Carro carro_08 = new Carro();
 
     carro_08.ligar();
     carro_08.acelerar(50);
     carro_08.frear(100);
 
-    Assert.assertEquals((Integer) 0, carro_08.getVelocidadeAtual());
+    assertEquals((Integer) 0, carro_08.getVelocidadeAtual());
+  }
+
+  @Test
+  public void deveCriarUmCarroComOsAtributos() {
+    Carro carro = new Carro("Roxo", "Lamborghini", "Urus", 450);
+
+    assertAll("Testando atributos do carro",
+            () -> assertEquals("Roxo", carro.getCor()),
+            () -> assertEquals("Lamborghini", carro.getMarca()),
+            () -> assertEquals("Urus", carro.getModelo()),
+            () -> assertEquals(450, carro.getVelocidadeMaxima())
+    );
+  }
+
+  @Test
+  public void naoDeveTrancarUmCarroJaTrancado() {
+    // Given
+    Carro carro = new Carro();
+    carro.ligar();
+
+    // When
+    carro.destrancar();
+    carro.trancar();
+    carro.trancar();
+    carro.trancar();
+
+    // Then
+    assertEquals(true, carro.getTrancado());
+  }
+
+  @Test
+  public void deveLancarExceptionEmCasoDeAceleracaoNegativa() {
+    Carro carro = new Carro();
+    carro.ligar();
+
+    Throwable throwable = assertThrows(Exception.class, () -> carro.acelerar(-10));
+
+    assertEquals("A aceleracao não pode ser menor que zero!", throwable.getMessage());
+  }
+
+  @Test
+  public void deveSerPossivelAlterarOsAtributos() {
+    Carro carro = new Carro("Roxo", "Lamborghini", "Urus", 450);
+
+    carro.setCor("Azul");
+    carro.setMarca("Volkswagen");
+    carro.setModelo("Fusca");
+
+    assertAll("Testando atributos do carro",
+            () -> assertEquals("Azul", carro.getCor()),
+            () -> assertEquals("Volkswagen", carro.getMarca()),
+            () -> assertEquals("Fusca", carro.getModelo()));
+  }
+
+  @Test
+  public void deveFrearCorretamente() throws Exception {
+    Carro carro = new Carro();
+
+    carro.ligar();
+    carro.acelerar(50);
+    carro.frear(20);
+
+    assertEquals(30, carro.getVelocidadeAtual());
+  }
+
+  @Test
+  public void deveCriarUmCarroComApenasVelocidadeMaxima() throws Exception {
+    Carro carro = new Carro(300);
+
+    assertEquals(300, carro.getVelocidadeMaxima());
+  }
+
+  @Test
+  public void deveCriarUmCarroComOsAtributosMenosVelocidade() {
+    Carro carro = new Carro("Roxo", "Lamborghini", "Urus");
+
+    assertAll("Testando atributos do carro",
+            () -> assertEquals("Roxo", carro.getCor()),
+            () -> assertEquals("Lamborghini", carro.getMarca()),
+            () -> assertEquals("Urus", carro.getModelo())
+    );
+  }
+
+  @Test
+  public void deveSerPossivelDestrancarUmCarro() {
+    Carro carro = new Carro();
+
+    carro.ligar();
+    carro.destrancar();
+    carro.trancar();
+    carro.destrancar();
+
+    assertFalse(carro.getTrancado());
+  }
+
+  @Test
+  public void naoDeveFazerNadaAoDestrancarUmCarroDestrancado() {
+    Carro carro = new Carro();
+
+    carro.ligar();
+    carro.destrancar();
+    carro.destrancar();
+    carro.destrancar();
+
+    assertFalse(carro.getTrancado());
+  }
+
+  @Test
+  public void umTipoCarroDeveSerIgualAoOutro() {
+    Carro carro01 = new Carro();
+    Carro carro02 = new Carro();
+
+
+    assertTrue(carro01.equals(carro02));
   }
 }
