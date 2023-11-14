@@ -18,9 +18,11 @@ public class CriarNovaContaTeste {
 
     Conta conta = new Conta(123456L, 0002L, 5L, BigDecimal.ZERO, "Thales", "123456789");
 
-    Assertions.assertThrows(Exception.class, () -> {
+    Throwable throwable = Assertions.assertThrows(Exception.class, () -> {
       criarNovaConta.execute(conta);
     });
+
+    Assertions.assertEquals("Usuario ja possui uma conta", throwable.getMessage());
   }
 
   @Test
@@ -32,6 +34,7 @@ public class CriarNovaContaTeste {
 
     Conta novaConta = criarNovaConta.execute(conta);
 
-    Assertions.assertEquals(novaConta.getTitular(), conta.getTitular());
+    Assertions.assertAll(() -> Assertions.assertEquals(123456L, novaConta.getId()),
+        () -> Assertions.assertEquals("Thales", novaConta.getTitular()));
   }
 }
