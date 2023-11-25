@@ -1,5 +1,7 @@
 package com.ada.banco.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,8 +9,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
+
+@Table(name = "clientes")
+@Entity(name = "clientes")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Cliente {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
@@ -20,9 +31,14 @@ public class Cliente {
   @Column(unique = true)
   private String cpf;
 
+  @JsonManagedReference
   @OneToOne(cascade = CascadeType.ALL, mappedBy = "cliente")
   private Conta conta;
 
+  public Cliente(String nome, String cpf) {
+    this.nome = nome;
+    this.cpf = cpf;
+  }
 
   public Conta getConta() {
     return conta;
