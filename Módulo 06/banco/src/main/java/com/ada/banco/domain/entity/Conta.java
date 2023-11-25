@@ -1,31 +1,49 @@
-package com.ada.banco.domain.model;
+package com.ada.banco.domain.entity;
+
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+
+@Table(name = "users")
+@Entity(name = "users")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Conta {
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
+
+    @Column(name = "agencia")
     private Long agencia;
+
+    @Column(name = "digito")
     private Long digito;
+
+    @Column(name = "saldo")
     private BigDecimal saldo;
 
-    // Usuario / Titular
-    private String titular;
-    private String cpf;
+    @OneToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 
-    public Conta(Long id, Long agencia, Long digito, BigDecimal saldo, String titular, String cpf) {
-        this.id = id;
+    @OneToMany(mappedBy = "contaOrigem")
+    private List<Transacao> transacao;
+
+    public Conta(Long agencia, Long digito, BigDecimal saldo) {
         this.agencia = agencia;
         this.digito = digito;
         this.saldo = saldo;
-        this.titular = titular;
-        this.cpf = cpf;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -51,21 +69,5 @@ public class Conta {
 
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
-    }
-
-    public String getTitular() {
-        return titular;
-    }
-
-    public void setTitular(String titular) {
-        this.titular = titular;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 }
