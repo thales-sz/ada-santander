@@ -1,12 +1,5 @@
 package com.ada.banco.application.usecase;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.math.BigDecimal;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,12 +7,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.ada.banco.application.usecase.cliente.CriarNovoCliente;
 import com.ada.banco.domain.dto.CriarClienteDto;
 import com.ada.banco.domain.entity.Cliente;
-import com.ada.banco.domain.entity.Conta;
 import com.ada.banco.domain.entity.TipoContaEnum;
 import com.ada.banco.infra.database.repository.ClienteRepository;
 
