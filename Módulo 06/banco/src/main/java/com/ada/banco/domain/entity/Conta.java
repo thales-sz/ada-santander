@@ -22,15 +22,16 @@ public class Conta {
     private String id;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private TipoContaEnum tipoConta;
 
-    @Column(name = "agencia")
+    @Column(name = "agencia", nullable = false)
     private Long agencia;
 
-    @Column(name = "digito")
+    @Column(name = "digito", nullable = false)
     private Long digito;
 
-    @Column(name = "saldo")
+    @Column(name = "saldo", nullable = false)
     private BigDecimal saldo;
 
     @JsonBackReference
@@ -39,7 +40,7 @@ public class Conta {
     private Cliente cliente;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "contaOrigem")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contaOrigem", fetch = FetchType.EAGER)
     private List<Transacao> transacao;
 
     public Conta(Long agencia, Long digito, BigDecimal saldo, TipoContaEnum tipo) {

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -32,12 +33,19 @@ public class Cliente {
   private String cpf;
 
   @JsonManagedReference
-  @OneToOne(cascade = CascadeType.ALL, mappedBy = "cliente")
+  @OneToOne(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.EAGER)
   private Conta conta;
 
   public Cliente(String nome, String cpf) {
     this.nome = nome;
     this.cpf = cpf;
+  }
+
+
+  public Cliente(String nome, String cpf, Conta conta) {
+    this.nome = nome;
+    this.cpf = cpf;
+    this.conta = conta;
   }
 
   public Conta getConta() {
